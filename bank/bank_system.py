@@ -65,18 +65,45 @@ class BankSystem:
             return customer 
         return None
 
-        def record_transaction(self, account_id, transaction_type, amount, from_acc, to_acc, balance_after):
-            t = Transaction(self.transction_counter, account_id, transactions_type, amount, from_acc, to_acc, balance_after)
-            self.transction_append(t)
-            self.transction_counter +=1
-            #Append to CSV flie 
+    def record_transaction(self, account_id, transaction_type, amount, from_acc, to_acc, balance_after):
+        t = Transaction(
+        self.transaction_counter,  
+        account_id,
+        transaction_type,         
+        amount,
+        from_acc,
+        to_acc,
+        balance_after
+        )
 
-            with open (self.transaction_file, mode"Asma", newline= "") as file:
-                writer = csv.writer(file) 
+        self.transactions.append(t) 
+        self.transction_counter +=1
+        #Append to CSV flie 
+
+        with open (self.transaction_file, mode"a", newline="") as file:
+            writer = csv.writer(file) 
                 writer.writerow([
-                    t.transction_id, t.account_id, 
-                    t.transaction_type, t.amount
-                    t.from_account, t.to_account, 
-                    
+                    t.transaction_id,
+                    t.account_id, 
+                    t.transaction_type,
+                    t.amount
+                    t.from_account, 
+                    t.to_account, 
+                    t.balance_after, 
+                    t.timestamp
                 ])
-                
+
+    def deposit(self, customer, account_type, amount):
+        account = customer.get_account(account_type)
+        if account and account.deposit(amount):
+            self.record_transaction(
+                customer.account_id, 
+                "deposit", 
+                amount,
+                account_type, 
+                account_type,
+                account.get_balance()
+            )
+            self.save_customers()
+            return True 
+        return False    
