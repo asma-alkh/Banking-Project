@@ -37,6 +37,7 @@ class BankCLI:
         print("3. Transfer")
         print("4. Check Balance")
         print("5. Logout")
+        print("6. Exit")
 
     def run(self):
         # Main loop for the CLI, keeps running until user exist.
@@ -64,9 +65,13 @@ class BankCLI:
                 # Logout the current customer
                 self.current_customer = None
                 print("Logged out")
-            else:
-                print("Invalid choice.")    
 
+            elif choice == "6":
+                print("Thank you for using My Bank. Goodbye!")
+                break 
+            else:
+                print("Invalid choice.")  
+                  
     def deposit_flow(self):
         # Handle the deposit process (ask for account and amount
         acc_type = input("Deposit into (checking/savings): ").lower()
