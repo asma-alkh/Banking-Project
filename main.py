@@ -67,3 +67,14 @@ class BankCLI:
             else:
                 print("Invalid choice.")    
 
+    def deposit_flow(self):
+        # Handle the deposit process (ask for account and amount
+        acc_type = input("Deposit into (checking/savings): ").lower()
+        amount = float(input("Enter amount"))
+        if self.system.deposit(self.current_customer, acc_type, amount):
+            print("Deposit successful.")
+        else:
+            print("Deposit failed. ")
+
+
+
