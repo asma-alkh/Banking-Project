@@ -76,8 +76,9 @@ class BankCLI:
         else:
             print("Deposit failed. ")
 
-            
-
-
-
-
+    def withdraw_flow(self):
+        # Handle the withdrawal process.
+        acc_type = input("Withdraw from (checking/savings): ").lower()
+        amount = float(input("Enter amount: "))
+        success, message = self.system.withdraw(self.current_customer, acc_type, amount)
+        print(message)
