@@ -56,4 +56,27 @@ class BankSystem:
 
         self.customers[new_id] = customer 
         self.save_customers()
-        return customer     
+        return customer 
+
+
+    def authenticate(self, account_id, password): 
+        customer = self.customers.get(account_id)
+        if customer and customer.password == password:
+            return customer 
+        return None
+
+        def record_transaction(self, account_id, transaction_type, amount, from_acc, to_acc, balance_after):
+            t = Transaction(self.transction_counter, account_id, transactions_type, amount, from_acc, to_acc, balance_after)
+            self.transction_append(t)
+            self.transction_counter +=1
+            #Append to CSV flie 
+
+            with open (self.transaction_file, mode"Asma", newline= "") as file:
+                writer = csv.writer(file) 
+                writer.writerow([
+                    t.transction_id, t.account_id, 
+                    t.transaction_type, t.amount
+                    t.from_account, t.to_account, 
+                    
+                ])
+                
