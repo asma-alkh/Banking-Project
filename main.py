@@ -82,3 +82,17 @@ class BankCLI:
         amount = float(input("Enter amount: "))
         success, message = self.system.withdraw(self.current_customer, acc_type, amount)
         print(message)
+
+    def transfer_flow(self):
+        # Handle money transfer between accounts/customers.
+        to_id = int(input("Enter destination account ID: "))
+        to_customer = self.system,customers.get(to_id)
+        if not to_customer:
+            print("Destination account not found. ")
+            return
+        from_type = input("Transfer from (checking/savings): ")   
+        amount = float(input("Enter amount: "))
+        success, message = self.system.transfer(self.current_customer, from_type, to_customer, to_type, amount)
+        print(message)
+    
+         
