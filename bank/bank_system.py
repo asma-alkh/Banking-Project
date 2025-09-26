@@ -107,3 +107,13 @@ class BankSystem:
             self.save_customers()
             return True 
         return False    
+
+    def withdraw(self,customer, account_type, amount):
+        account = customer.get_account(account_type)
+        if account:
+            success, message = account.withdraw(amount)
+            if success:
+                self.record_transaction(customer.account_id, "withdraw", amount, account_type, account_type, account.get_balance())
+                self.save_customers()
+            return success, message
+        return False, "Account not found" 
