@@ -47,3 +47,13 @@ class BankSystem:
                     "balance_checking": cust.checking_account.get_balance() if cust.has_checking() else 0.0,
                     "balance_savings": cust.savings_account.get_balance() if cust.has_savings() else 0.0,
                 })                  
+
+    def add_customer(self, first_name, last_name, password, with_checking=True, with_savings=False):
+        new_id = max(self.customers.keys(), default=10000) + 1
+        checking_balance = 0.0 if with_checking else None 
+        savings_balance = 0.0 if with_savings else None 
+        customer - Customer(new_id, first_name, last_name, password, checking_balance, savings_balance) 
+
+        self.customers[new_id] = customer 
+        self.save_customers()
+        return customer     
