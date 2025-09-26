@@ -9,6 +9,17 @@ class BankCLI:
          self.system = BankSystem()
          self.current_customer = None
 
+    def show_menu(self):
+        print("\n=== Main Menu ===")
+        print("1. Create Account")
+        print("2. Deposit")
+        print("3. Withdraw")
+        print("4. Transfer")
+        print("5. Check Balance")
+        print("6. Logout")
+        print("7. Exit")
+     
+
     def login(self):
         #Ask user for account ID and password and log them in if valid.  
 
