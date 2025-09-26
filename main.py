@@ -30,48 +30,60 @@ class BankCLI:
             print("Invalid account ID.")
             return False
 
-    def show_menu(self):
-        #Display the available banking options to the user.
-        print("\n1. Deposit")
-        print("2. Withdraw")
-        print("3. Transfer")
-        print("4. Check Balance")
-        print("5. Logout")
-        print("6. Exit")
-
     def run(self):
-        # Main loop for the CLI, keeps running until user exist.
-        print("=== Welcome to My Bank === ")    
+        print("=== Welcome to My Bank === ")
         while True:
             if not self.current_customer:
-                # If no one is logged in, force login first
-                if not self.login():
+                self.show_menu()
+                choice = input("Select option: ")
+                
+                if choice == "1":
+                    self.create_account_flow()
                     continue
-            # Show menu and get user choice
-            self.show_menu()
-            choice = input("select option: ")   
-
-            # Call corresponding function based on user choice
-
-            if choice == "1":
-                self.deposit_flow()
-            elif choice == "2":
-                self.withdraw_flow() 
-            elif choice == "3":
-                self.transfer_flow()
-            elif choice == "4":
-                self.check_balance()
-            elif choice == "5":
-                # Logout the current customer
-                self.current_customer = None
-                print("Logged out")
-
-            elif choice == "6":
-                print("Thank you for using My Bank. Goodbye!")
-                break 
+                elif choice == "7":
+                    print("Goodbye!")
+                    break
+                else:
+                    if not self.login():
+                        continue
             else:
-                print("Invalid choice.")  
-                  
+                self.show_menu()
+                choice = input("Select option: ")
+                
+                if choice == "1":
+                    self.create_account_flow()
+                elif choice == "2":
+                    self.deposit_flow()
+                elif choice == "3":
+                    self.withdraw_flow()
+                elif choice == "4":
+                    self.transfer_flow()
+                elif choice == "5":
+                    self.check_balance()
+                elif choice == "6":
+                    self.current_customer = None
+                    print("Logged out")
+                elif choice == "7":
+                    print("Goodbye!")
+                    break
+                else:
+                    print("Invalid choice.")
+
+
+    def create_account_flow(self):
+        print("\n=== Create a New Account ===")
+        first_name = input("Enter first name: ")
+        last_name = input("Enter last name: ")
+        password = input("Enter password: ")
+        with_checking = input("Open checking account? (yes/no): ").strip().lower() == "yes"
+        with_savings = input("Open savings account? (yes/no): ").strip().lower() == "yes"
+        new_customer = self.system.add_customer(
+        first_name, last_name, password, with_checking, with_savings
+        )
+        print(f"Account created successfully!")
+        print(f"Your new Account ID is: {new_customer.account_id}")
+        print("You can now log in using this Account ID.")
+              
     def deposit_flow(self):
         # Handle the deposit process (ask for account and amount
         acc_type = input("Deposit into (checking/savings): ").lower()
