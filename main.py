@@ -35,12 +35,12 @@ class BankCLI:
         print("\n1. Deposit")
         print("2. Withdraw")
         print("3. Transfer")
-        print("4. check Balance")
-        print("5. logout")
+        print("4. Check Balance")
+        print("5. Logout")
 
     def run(self):
         # Main loop for the CLI, keeps running until user exist.
-        print("=== Welcome to My Bank ")    
+        print("=== Welcome to My Bank === ")    
         while True:
             if not self.current_customer:
                 # If no one is logged in, force login first
@@ -70,11 +70,14 @@ class BankCLI:
     def deposit_flow(self):
         # Handle the deposit process (ask for account and amount
         acc_type = input("Deposit into (checking/savings): ").lower()
-        amount = float(input("Enter amount"))
+        amount = float(input("Enter amount: "))
         if self.system.deposit(self.current_customer, acc_type, amount):
             print("Deposit successful.")
         else:
             print("Deposit failed. ")
+
+            
+
 
 
 
