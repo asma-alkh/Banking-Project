@@ -21,4 +21,14 @@ class Customer:
         """Return True if custmer has checking account."""
         return self.cheacking_account is not None
 
-
+    def has_saving(self):
+        """Return True if the customer has a savings account. """
+        return self.savings_account is not None      
+    
+    def get_account(self, account_type):
+        """Return the requsted account (chaking/ savings ) or None if is not found."""
+        if account_type == "checking":
+            return self.checking_account
+        elif account_type == "savings":
+            return self.savings_account
+        return None
