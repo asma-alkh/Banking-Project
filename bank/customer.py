@@ -9,24 +9,24 @@ class Customer:
         self.first_name = first_name 
         self.last_name = last_name
         self.password = password 
+        # Create accounts only if balances are provided (None means no account)
         self.checking_account = CheckingAccount(account_id, checking_balance) if checking_balance is not None else None
-        self.savings.account = SavingsAccount(account_id, savings_balance) if savings_balance is not None else None
-
+        self.savings_account = SavingsAccount(account_id, savings_balance) if savings_balance is not None else None
 
     def full_name(self):
-        """ Return the. full name of the custmer. """
+        """Return the full name of the customer."""
         return f"{self.first_name} {self.last_name}"
 
-    def had_checking(self):
-        """Return True if custmer has checking account."""
-        return self.cheacking_account is not None
+    def has_checking(self):
+        """Return True if the customer has a checking account."""
+        return self.checking_account is not None
 
-    def has_saving(self):
-        """Return True if the customer has a savings account. """
+    def has_savings(self):
+        """Return True if the customer has a savings account."""
         return self.savings_account is not None      
-    
+
     def get_account(self, account_type):
-        """Return the requsted account (chaking/ savings ) or None if is not found."""
+        """Return the requested account ('checking'/'savings') or None if not found."""
         if account_type == "checking":
             return self.checking_account
         elif account_type == "savings":

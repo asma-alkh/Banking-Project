@@ -85,14 +85,38 @@ class BankCLI:
 
     def transfer_flow(self):
         # Handle money transfer between accounts/customers.
-        to_id = int(input("Enter destination account ID: "))
-        to_customer = self.system,customers.get(to_id)
-        if not to_customer:
-            print("Destination account not found. ")
+        try:
+            to_id = int(input("Enter destination account ID: "))
+        except ValueError:
+            print("Invalid account ID.")
             return
-        from_type = input("Transfer from (checking/savings): ")   
-        amount = float(input("Enter amount: "))
-        success, message = self.system.transfer(self.current_customer, from_type, to_customer, to_type, amount)
+
+        to_customer = self.system.customers.get(to_id)
+        if not to_customer:
+            print("Destination account not found.")
+            return
+
+        from_type = input("Transfer from (checking/savings): ").lower()
+        to_type = input("Transfer to (checking/savings): ").lower()
+
+        try:
+            amount = float(input("Enter amount: "))
+        except ValueError:
+            print("Invalid amount.")
+            return
+
+        success, message = self.system.transfer(
+            self.current_customer, from_type, to_customer, to_type, amount
+        )
         print(message)
-    
-         
+
+    def check_balance(self):
+         # Display checking/savings balance for the current customer. 
+        if self.current_customer.has_checking():
+            print(f"Checking balance: {self.current_customer.checking_account.get_balance()}")
+        if self.current_customer.has_savings():
+            print(f"Savings balance: {self.current_customer.savings_account.get_balance()}")   
+
+if __name__ == "__main__":
+    app = BankCLI()
+    app.run()

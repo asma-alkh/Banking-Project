@@ -10,4 +10,4 @@ class Transaction:
         self.from_account = from_account
         self.to_account = to_account
         self.balance_after = balance_after
-        self.timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")ل
+        self.timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")

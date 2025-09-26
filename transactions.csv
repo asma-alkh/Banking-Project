@@ -1,0 +1,4 @@
+1,10001,deposit,500.0,savings,savings,10500.0,2025-09-26 22:58:20
+2,10001,deposit,500.0,checking,checking,1500.0,2025-09-26 22:59:08
+3,10001,withdraw,200.0,savings,savings,10300.0,2025-09-26 22:59:56
+4,10001,transfer,300.0,checking,savings,1200.0,2025-09-26 23:00:47

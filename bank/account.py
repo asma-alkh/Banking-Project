@@ -20,9 +20,12 @@ class BankAccount:
 
     def deposit(self, amount):
         if amount <= 0:
-            return False
+            return False, "Deposit must be positive"
         self.balance += amount
-        return True
+        if self.balance >= 0 and not self.is_active:
+            self.is_active = True
+            self.overdraft_count = 0
+        return True, "Deposit successful"
 
     def withdraw(self, amount):
         if amount <= 0:
@@ -63,4 +66,3 @@ class CheckingAccount(BankAccount):
 class SavingsAccount(BankAccount):
     """Represents a savings account, inherits behavior from BankAccount."""
     pass
-
