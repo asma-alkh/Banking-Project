@@ -43,3 +43,4 @@ account_id,first_name,last_name,password,balance_checking,balance_savings
 10042,John,Doe,1234,100.0,0.0
 10043,Jane,Smith,5678,100.0,0.0
 10044,John,Doe,1234,50.0,0.0
+10045,Ali,Ali-khathami,200655,0.0,0.0
