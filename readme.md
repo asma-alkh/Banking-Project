@@ -1,6 +1,6 @@
 ## 🏦 Bank System
 
-A simple **command-line banking system built in python.
+A simple **command-line banking system** built in python.
 This project allows customers to log in, check their account balance, deposit, withdraw, and transfer money between accounts.
 
 ---
