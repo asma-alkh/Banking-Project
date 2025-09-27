@@ -26,9 +26,9 @@ class TestBankAccount(unittest.TestCase):
         self.assertFalse(success)
         self.assertEqual(message, "Withdrawal denied: would exceed overdraft limit")
 
-        def test_overdraft_fee_applied(self):
-             # Test overdraft: balance goes negative, fee applied, account still active
-            success, message = self.account.withdraw(120)  
-            self.assertTrue(success)
-             # 100 - 120 = -20, minus overdraft fee (35) => balance = -55
-            self.assertEqual(self.account.get_balance(), -55.0)    
+    def test_overdraft_fee_applied(self):
+         # Test overdraft: balance goes negative, fee applied, account still active
+        success, message = self.account.withdraw(120)  
+        self.assertTrue(success)
+          # 100 - 120 = -20, minus overdraft fee (35) => balance = -55
+        self.assertEqual(self.account.get_balance(), -55.0)    

@@ -152,4 +152,3 @@ class BankSystem:
         )
         self.save_customers()
         return True, "Transfer successful"
- 
