@@ -29,4 +29,7 @@
 1,10042,deposit,200.0,checking,checking,200.0,2025-09-27 16:06:11
 2,10042,transfer,100.0,checking,checking,100.0,2025-09-27 16:06:11
 1,10044,deposit,100.0,checking,checking,100.0,2025-09-27 16:06:11
-2,10044,withdraw,50.0,checking,checking,50.0,2025-09-27 16:06:11
+2,10044,withdraw,50.0,checking,checking,50.0,2025-09-27 16:06:111,10046,deposit,2000.0,checking,checking,2000.0,2025-09-28 08:01:35
+2,10046,withdraw,200.0,checking,checking,1800.0,2025-09-28 08:02:46
+3,10046,transfer,200.0,checking,checking,1600.0,2025-09-28 08:03:32
+1,10046,withdraw,1700.0,checking,checking,-135.0,2025-09-28 08:07:29

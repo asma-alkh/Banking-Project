@@ -4,7 +4,7 @@ account_id,first_name,last_name,password,balance_checking,balance_savings
 10003,melvin,gordon,uYWE732g4ga1,2000.0,20000.0
 10004,stacey,abrams,DEU8_qw3y72$,2000.0,20000.0
 10005,jake,paul,d^dg23g)@,100000.0,100000.0
-10006,Asma ,Abdullah ,asma22,0.0,0.0
+10006,Asma ,Abdullah ,asma22,200.0,0.0
 10007,John,Doe,1234,0.0,0.0
 10008,John,Doe,1234,0.0,0.0
 10009,John,Doe,1234,100.0,0.0
@@ -44,3 +44,4 @@ account_id,first_name,last_name,password,balance_checking,balance_savings
 10043,Jane,Smith,5678,100.0,0.0
 10044,John,Doe,1234,50.0,0.0
 10045,Ali,Ali-khathami,200655,0.0,0.0
+10046,Amal,Abdullah,200744,-135.0,0.0

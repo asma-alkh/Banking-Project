@@ -105,7 +105,10 @@ class BankSystem:
     def deposit(self, customer, account_type, amount):
         """Deposit money into a customer's account."""
         account = customer.get_account(account_type)
-        if account and account.deposit(amount):
+        if not account:
+            return False
+        success, message = account.deposit(amount)
+        if success:
             self.record_transaction(
                 customer.account_id,
                 "deposit",
@@ -128,7 +131,7 @@ class BankSystem:
                                         account.get_balance())
                 self.save_customers()
             return success, message
-        return False, "Account not found"
+        return False, "Withdrawal denied: would exceed overdraft limit"
 
     def transfer(self, from_customer, from_type, to_customer, to_type, amount):
         """Transfer money between accounts (can be between two customers)."""
